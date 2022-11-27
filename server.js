@@ -2,12 +2,15 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const app = express();
+const cors = require('cors');
 
 //import routes
 const postRoutes = require('./routes/posts');
 //app middleware
 app.use(bodyParser.json());
+app.use(cors());
 
+//route middleware
 app.use(postRoutes);
 
 
@@ -16,6 +19,7 @@ const DB_URL = 'mongodb+srv://Muthu:Muthu123@mernapp.1omssvd.mongodb.net/Muthu?r
 
 
 mongoose.connect(DB_URL,)
+
 .then(() =>{
     console.log('DB connected');
 })
